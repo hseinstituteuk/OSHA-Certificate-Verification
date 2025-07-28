@@ -2,20 +2,31 @@ MIT License
 
 Copyright (c) 2025 HSE Institute UK
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+Site Summary: OSHA-EDU Verification Page
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+Purpose:
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+The site provides a platform for validating certificates issued by OSHA-EDU.
+Verification Process:
+
+Users can enter their certificate ID into a verification form to check the validity of their certificate.
+Initial invalid verification message indicates the certificate is not recognized.
+Successful Confirmation:
+
+When a valid certificate is verified, users are shown a confirmation page stating "THIS IS A VALID CERTIFICATE".
+Important details included on the confirmation page:
+Registration Number
+Learner Name
+Qualification Name
+Date of Issue
+Contact Information:
+
+Email: info@oshaedu.com
+Address: 437 Dream Street, Albania Dhosdod, USA
+Phone: +1(778)784-4228
+Educational Offering:
+
+The site is associated with OSHA, providing training related to occupational safety and health.
+User Guidance:
+
+Users are advised to ensure that the details on the printed certificate match those on the verification page.
