@@ -1,0 +1,143 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   OSHA Training
+  </title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <style>
+   @keyframes fadeInScale {
+    0% { opacity: 0; transform: scale(0.95); }
+    100% { opacity: 1; transform: scale(1); }
+   }
+   .fade-in-scale { animation: fadeInScale 0.4s ease forwards; }
+   .spinner {
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top: 3px solid white;
+    border-radius: 50%;
+    width: 16px; height: 16px;
+    animation: spin 1s linear infinite;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 6px;
+   }
+   @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+   }
+  </style>
+  <script>
+   const certificates = {
+    "123456": { name: "John Doe", course: "OSHA 10-Hour General Industry", date: "2023-04-15", status: "Valid", certificateNumber: "123456" },
+    "789-802": { name: "Rashid", course: "OSHA 30-Hour Construction", date: "2023-01-20", status: "Valid", certificateNumber: "654321" },
+    "111222": { name: "Alice Johnson", course: "OSHA 10-Hour Construction", date: "2022-12-05", status: "Expired", certificateNumber: "111222" }
+   };
+
+   function searchCertificate(event) {
+    event.preventDefault();
+    const input = document.getElementById("certificate");
+    const resultDiv = document.getElementById("certificate-result");
+    const button = document.getElementById("search-button");
+    const certNum = input.value.trim();
+
+    if (certNum === "") {
+     resultDiv.innerHTML = '<p class="text-red-600">Please enter a certificate number.</p>';
+     return;
+    }
+
+    button.disabled = true;
+    button.innerHTML = '<span class="spinner"></span>Searching...';
+
+    setTimeout(() => {
+     if (certificates[certNum]) {
+      const cert = certificates[certNum];
+      resultDiv.innerHTML = `
+       <div class="border border-gray-300 rounded-md p-4 mt-4 bg-white shadow-sm max-w-xl fade-in-scale">
+        <h3 class="text-lg font-semibold text-green-600 mb-2">Certificate Found</h3>
+        <p><span class="font-semibold">Name:</span> ${cert.name}</p>
+        <p><span class="font-semibold">Course:</span> ${cert.course}</p>
+        <p><span class="font-semibold">Date:</span> ${cert.date}</p>
+        <p><span class="font-semibold">Status:</span> <span class="${cert.status === 'Valid' ? 'text-green-600' : 'text-red-600'}">${cert.status}</span></p>
+        <p><span class="font-semibold">Certificate Number:</span> ${cert.certificateNumber}</p>
+       </div>
+      `;
+     } else {
+      resultDiv.innerHTML = '<p class="text-red-600 mt-4">Certificate number not found. Please check and try again.</p>';
+     }
+     button.disabled = false;
+     button.innerHTML = 'Search';
+    }, 1200);
+   }
+  </script>
+ </head>
+ <body class="bg-white text-black font-sans">
+  <header class="bg-[#f7fafc]">
+   <div class="max-w-7xl mx-auto flex items-center justify-between px-4 py-4 sm:py-6">
+    <div class="flex-shrink-0">
+     <!-- ✅ New Logo -->
+     <img src="Training LOgo.png" alt="logo.png" class="object-contain" width="120" height="60"/>
+    </div>
+    <nav class="hidden md:flex items-center space-x-6 text-sm font-normal text-black">
+     <a class="hover:underline" href="#">Home</a>
+     <a class="hover:underline" href="#">Trainings</a>
+     <a class="hover:underline" href="#">Find Atp</a>
+     <a class="hover:underline" href="#">About</a>
+     <a class="hover:underline pr-4 border-r border-gray-300" href="#">Contact</a>
+     <a class="ml-6 bg-[#0d8ddb] text-white text-sm font-normal rounded-md px-4 py-2 hover:bg-[#0b7cc0] transition" href="#">Track Certificate</a>
+    </nav>
+   </div>
+  </header>
+
+  <section class="bg-[#f7fafc] text-center py-8 px-4">
+   <h2 class="text-[#0d8ddb] font-semibold text-lg md:text-xl tracking-wide">VERIFY YOUR CERTIFICATE</h2>
+   <p class="text-gray-600 mt-1 text-sm md:text-base max-w-xl mx-auto">The international leading qualification in Health and Safety</p>
+  </section>
+
+  <main class="max-w-4xl mx-auto px-4 py-8">
+   <form class="max-w-xl" onsubmit="searchCertificate(event)">
+    <label class="block mb-2 text-black text-sm font-normal" for="certificate">Enter Certificate Number:</label>
+    <input class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-[#0d8ddb]" id="certificate" name="certificate" placeholder="xxxxxx" type="text"/>
+    <button class="mt-3 bg-[#0d8ddb] text-white text-sm font-normal rounded-md px-4 py-2 hover:bg-[#0b7cc0] transition flex items-center justify-center" id="search-button" type="submit">Search</button>
+   </form>
+   <div id="certificate-result" class="mt-2"></div>
+  </main>
+
+  <footer class="bg-[#f7fafc] mt-12 py-10 px-6">
+   <div class="max-w-7xl mx-auto flex flex-col md:flex-row md:items-start md:justify-between gap-8 md:gap-0">
+    <div class="md:w-1/2">
+     <h3 class="text-xl font-semibold text-gray-900 mb-2">Subscribe to our newsletter</h3>
+     <p class="text-gray-400 text-sm max-w-md">Stay up to date with the roadmap progress, announcements and exclusive discounts feel free to sign up with your email.</p>
+    </div>
+    <form action="#" method="POST" class="flex items-center space-x-3 md:w-1/2 max-w-md">
+     <input class="flex-grow border border-gray-300 rounded-md px-3 py-2 text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#0d8ddb]" name="email" placeholder="Enter your email" required type="email"/>
+     <button class="bg-[#0d8ddb] text-white text-sm font-normal rounded-md px-4 py-2 hover:bg-[#0b7cc0] transition" type="submit">Subscribe</button>
+    </form>
+   </div>
+   <div class="mt-8 max-w-7xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-6 md:gap-0">
+    <div class="flex flex-col md:flex-row md:items-center md:space-x-4">
+     <!-- ✅ New Footer Logo -->
+     <img src="Training Logo.png" alt="logo.png" class="object-contain mb-3 md:mb-0" width="120" height="60"/>
+     <p class="text-gray-600 text-sm max-w-xs">The international leading qualification in Health and Safety</p>
+    </div>
+    <div class="flex flex-col sm:flex-row sm:space-x-4 space-y-3 sm:space-y-0 mt-4 md:mt-0">
+     <a href="mailto:info@oshatrainings.us" class="inline-flex items-center space-x-2 bg-[#0d8ddb] text-white text-sm font-normal rounded-md px-4 py-2 hover:bg-[#0b7cc0] transition">
+      <i class="fas fa-envelope"></i><span>info@oshatrainings.us</span>
+     </a>
+     <a href="tel:+121275790001" class="inline-flex items-center space-x-2 border border-gray-300 text-gray-900 text-sm font-normal rounded-md px-4 py-2 hover:bg-gray-100 transition">
+      <i class="fas fa-phone-alt"></i><span>+1 212-757-90001</span>
+     </a>
+    </div>
+   </div>
+   <div class="mt-8 max-w-7xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between text-gray-700 text-sm">
+    <p>© 2022 Osha Trainings. All rights reserved.</p>
+    <nav class="flex space-x-6 mt-4 md:mt-0 justify-center md:justify-start">
+     <a class="hover:underline" href="#">Home</a>
+     <a class="hover:underline" href="#">About</a>
+     <a class="hover:underline" href="#">Contact</a>
+    </nav>
+   </div>
+  </footer>
+ </body>
+</html>
